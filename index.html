@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link href="output.css " rel="stylesheet" />
+  </head>
+  <body
+    class="bg-gradient-to-r from-white via-blue-50 to-blue-50 min-h-screen flex flex-col items-center py-10"
+  >
+    <!-- Title -->
+    <div class="name mb-6">
+      <h1 class="text-3xl font-extrabold text-neutral-900 drop-shadow-lg">
+        SASTRA Expense Tracker
+      </h1>
+    </div>
+
+    <!-- Main Container -->
+    <div
+      class="container w-full bg-white mx-auto mt-1.5 max-w-xl px-5 py-6 rounded-2xl shadow-lg"
+    >
+      <!-- Input Fields -->
+      <div class="inputField flex flex-wrap gap-3 justify-between mb-6">
+        <input
+          type="number"
+          id="amt"
+          class="amount flex-1 min-w-[120px] bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-blue-400 focus:outline-none"
+          placeholder="Enter Amount(₹)"
+        />
+        <select
+          name="category"
+          id="category"
+          class="flex-1 min-w-[150px] bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-blue-400 focus:outline-none"
+        >
+          <option value="" disabled selected>Select category</option>
+          <option value="Canteen">Canteen</option>
+          <option value="Travel">Travel</option>
+          <option value="Stationery">Stationery</option>
+          <option value="Movie">Movie</option>
+          <option value="Personal">Personal</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <input
+          type="text"
+          id="des"
+          class="des flex-1 min-w-[150px] bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-blue-400 focus:outline-none"
+          placeholder="Description"
+        />
+        <input
+          type="date"
+          id="date"
+          name="date"
+          class="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:ring-1 focus:ring-blue-400 focus:outline-none"
+        />
+
+        <!-- Add Button -->
+        <button
+          id="cashInBtn"
+          class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg px-4 py-2 transition duration-200 hover:scale-105 shadow-md"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg>
+          <span>Cash In</span>
+        </button>
+
+        <button
+          id="cashOutBtn"
+          class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg px-4 py-2 transition duration-200 hover:scale-105 shadow-md"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M640-240v-80h104L536-526 376-366 80-664l56-56 240 240 160-160 264 264v-104h80v240H640Z"/></svg>
+          <span>Cash Out</span>
+        </button>
+
+        <!-- Clear Button -->
+        <button
+          id="clearBtn"
+          class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg px-5 py-2 transition duration-200 hover:scale-105 shadow-md"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="22px"
+            viewBox="0 -960 960 960"
+            width="22px"
+            fill="#FFFFFF"
+          >
+            <path
+              d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"
+            />
+          </svg>
+          <span>CLEAR ALL</span>
+        </button>
+      </div>
+
+      <!-- Expense Table -->
+      <div class="expenseList overflow-x-auto">
+        <table
+          class="w-full border-collapse shadow-lg rounded-xl overflow-hidden"
+        >
+          <thead class="bg-blue-500 text-white">
+            <tr>
+              <th class="px-4 py-3 text-left">Category</th>
+              <th class="px-4 py-3 text-left">Amount</th>
+              <th class="px-4 py-3 text-left">Description</th>
+              <th class="px-4 py-3 text-left">Date</th>
+              <th class="px-4 py-3 text-left">Action</th>
+            </tr>
+          </thead>
+          <tbody
+            id="expense-table-body"
+            class="divide-y divide-gray-200 bg-white"
+          ></tbody>
+          <tfoot class="bg-gray-100 font-bold">
+            <tr>
+              <td class="px-4 py-3">Total:</td>
+              <td id="totAmt" class="px-4 py-3 ">0</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
