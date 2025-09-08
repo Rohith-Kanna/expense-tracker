@@ -33,6 +33,11 @@ function addEntry(type) {
   const date = DateInp.value || today;
   const description = Description.value;
 
+  if(date>today)
+  {
+    alert("date should not be a future date");
+    return;
+  }
   if (isNaN(amount) || amount <= 0) {
     alert("Please enter a valid amount");
     return;
@@ -78,14 +83,14 @@ function addEntry(type) {
   editBtn.className =
     "bg-blue-500 text-white px-5 py-2 rounded-md hover:bg-blue-600 transform transition duration-200 hover:scale-105";
 
-  editBtn.addEventListener("click", function () {
-    // Fill inputs with current values
-    CategorySelect.value = expense.category;
-    Amt.value = expense.amount;
-    Description.value = expense.description;
-    DateInp.value = expense.date;
 
-    // Remove from table and totals until re-added
+  // Delete button
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.className =
+    "bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transform transition duration-200 hover:scale-105";
+
+  deleteBtn.addEventListener("click", function () {
     expenses.splice(expenses.indexOf(expense), 1);
     if (expense.type === "in") {
       totalIn -= expense.amount;
@@ -96,13 +101,15 @@ function addEntry(type) {
     expenseTableBody.removeChild(newRow);
   });
 
-  // Delete button
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Delete";
-  deleteBtn.className =
-    "bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transform transition duration-200 hover:scale-105";
+  
+  editBtn.addEventListener("click", function () {
+    // Fill inputs with current values
+    CategorySelect.value = expense.category;
+    Amt.value = expense.amount;
+    Description.value = expense.description;
+    DateInp.value = expense.date;
 
-  deleteBtn.addEventListener("click", function () {
+    // Remove from table and totals until re-added
     expenses.splice(expenses.indexOf(expense), 1);
     if (expense.type === "in") {
       totalIn -= expense.amount;
